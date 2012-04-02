@@ -1,0 +1,25 @@
+22:59 < elimisteve1> ajvb: I just figured something out that you'll be very happy about
+22:59 < elimisteve1> I know how to automatically append ' swag' to all your commit messages lol
+23:00 < elimisteve1> use the '$#' bash variable (analogous to 'len(sys.argv)') to detect how many arguments there are in the git commit command issued at the 
+                     command line
+23:02 < elimisteve1> use said Bash var in a git hook located in, say, ptm_site/.git/hooks/pre-commit
+23:02 < elimisteve1> (a pre-commit Git hook)
+23:06 < elimisteve1> last_arg_ndx=$(($# - 1))
+23:06 < elimisteve1> if [[ last_arg_ndx == 4]; do
+23:06 < elimisteve1>   $1 $2 $3 $(($4 += " swag"))
+23:06 < elimisteve1> done
+23:06 < elimisteve1> something like that...
+23:06 < elimisteve1> should work
+23:15 < elimisteve1> ah, it appears that $1 is the relevant arg
+23:15 < elimisteve1> of the prepare-commit-message git hook
+23:16 < elimisteve1> echo "$1 swag" > $1
+23:16 < elimisteve1> !!!
+23:16 < elimisteve1> that may be it dude
+23:25 < elimisteve1> LOL
+23:25 < elimisteve1> ajvb: dude...
+23:26 < elimisteve1> this is a hack, but it works
+23:26 < elimisteve1> $ cat .git/hooks/prepare-commit-msg
+23:26 < elimisteve1> #!/bin/bash
+23:26 < elimisteve1> text=`cat .git/COMMIT_EDITMSG`
+23:26 < elimisteve1> echo "$text swag" > .git/COMMIT_EDITMSG
+

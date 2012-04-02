@@ -1,0 +1,64 @@
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+#  Settings
+##############################################
+background yes
+use_xft yes
+xftfont sans:size=9
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 245 245
+maximum_width 480
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color 000000
+default_shade_color 000000
+default_outline_color 170D0D
+alignment top_right
+gap_x 12
+gap_y 32
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+##############################################
+#  Output
+##############################################
+TEXT
+
+SYSTEM  INFO ${hr 2}
+Host: $alignr$nodename
+Uptime: $alignr$uptime
+Battery: $alignr${battery_time BAT1} / ${battery_short BAT1}
+Swap usage: $alignr$swap / $swapmax
+Disk usage: $alignr${fs_used /} / ${fs_size /}
+RAM usage: $alignr$mem / $memmax
+CPU usage: $alignr${cpu cpu0}%
+
+TOP  PROCESSES ${hr 2}
+${top name 1} $alignr ${top cpu 1}
+${top name 2} $alignr ${top cpu 2}
+${top name 3} $alignr ${top cpu 3}
+${top name 4} $alignr ${top cpu 4}
+${top name 5} $alignr ${top cpu 5}
+

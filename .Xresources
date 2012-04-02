@@ -1,0 +1,17 @@
+!
+! Comments begin with a "!" character.
+!
+
+xterm*background:       black
+xterm*foreground:       yellow
+xterm*cursorColor:      yellow
+
+rxvt*background:	black
+rxvt*foreground:	yellow
+rxvt*font:		yellow
+rxvt*scrollBar:	off
+
+##transparency
+rxvt*inheritPixmap: true
+rxvt*tintColor: white
+rxvt*shading: 40
