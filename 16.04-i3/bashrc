@@ -1,0 +1,100 @@
+#!/bin/bash
+
+HISTCONTROL=ignoreboth
+shopt -s histappend
+HISTSIZE=1000000
+HISTFILESIZE=2000000
+
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+alias ls='ls -GFh --color=auto'
+
+source ~/git-completion.bash
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
+
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+
+alias pingg="ping -c 5 google.com"
+
+export GOPATH="$HOME/gocode"
+export PATH="$PATH:$GOPATH/bin"
+
+eval "$(rbenv init -)"
+
+#source /usr/local/bin/virtualenvwrapper.sh
+
+export NVIM_TUI_ENABLE_TRUE_COLOR=0
+
+alias grep='grep --color=auto'
+
+export EDITOR="/usr/bin/nvim"
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# PATH
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
+export PATH="$HOME/exploit-database:$PATH"
+export PATH="$PATH:$HOME/afl/afl-2.35b"
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+export NVM_DIR="/home/ajvb/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < $HOME/.ssh/config)" scp sftp ssh
+
+alias update_submodule='git submodule update --init --recursive'
+
+alias be='bundle exec'
+alias g="git"
+
+alias vim='nvim'
+
+extract () {
+ if [ -f $1 ] ; then
+     case $1 in
+         *.tar.bz2)   tar xvjf $1 && cd $(echo $1 | sed 's/.tar.bz2//')    ;;
+         *.tar.gz)    tar xvzf $1 && cd $(echo $1 | sed 's/.tar.gz//')    ;;
+         *.bz2)       bunzip2 $1 && cd $(echo $1 | sed 's/.bz2//')    ;;
+         *.rar)       unrar x $1 && cd $(echo $1 | sed 's/.rar//')    ;;
+         *.gz)        gunzip $1 && cd $(echo $1 | sed 's/.gz//')    ;;
+         *.tar)       tar xvf $1 && cd $(echo $1 | sed 's/.tar//')    ;;
+         *.tbz2)      tar xvjf $1 && cd $(echo $1 | sed 's/.tbz2//')    ;;
+         *.tgz)       tar xvzf $1 && cd $(echo $1 | sed 's/.tgz//')    ;;
+         *.zip)       unzip $1 && cd $(echo $1 | sed 's/.zip//')    ;;
+         *.Z)         uncompress $1 && cd $(echo $1 | sed 's/.Z//')    ;;
+         *.7z)        7z x $1 && cd $(echo $1 | sed 's/.7z//')    ;;
+         *)           echo "don't know how to extract '$1'..." ;;
+     esac
+ else
+     echo "'$1' is not a valid file!"
+ fi
+}
+
+# Linux specific
+export TERMINAL=/usr/bin/urxvt
+
+setxkbmap -option caps:ctrl_modifier
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+export PATH="$PATH:/home/ajvb/mattermost-desktop-3.7.0/"
+
+alias lock='xscreensaver-command --lock'
+
+alias scrub='exiftool -all='
+
+alias le='lock && exit'

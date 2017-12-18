@@ -1,0 +1,55 @@
+[user]
+  name = AJ Bahnken
+  email = aj@ajvb.me
+[core]
+  autocrlf = input
+	excludesfile = ~/.gitignore_global
+[color]
+  ui = true
+[color "branch"]
+	current = red bold
+	local = yellow bold
+	remote = green bold
+[color "diff"]
+  meta = cyan
+  frag = magenta
+  whitespace = red reverse
+[color "status"]
+  changed = yellow bold
+  untracked = red bold
+[alias]
+  br   = branch
+  co   = checkout
+  d    = diff
+  fh   = log -p
+  st   = status -sb -unormal
+  cm   = commit -m
+  l    = log
+  lg   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  last = log -1 HEAD
+  meh  = commit --amend
+  unci = reset HEAD^
+  uncommit = reset HEAD^
+  authors = shortlog -sn
+
+  pum   = pull origin master
+
+  poh   = push origin HEAD
+  puh   = pull origin HEAD
+
+  # Git flow aliases
+  merge = merge --no-ff
+  f     = !sh -c 'git co develop && git co -b feature/$1' -
+  dpo   = push origin develop
+  dpu   = pull origin develop
+[branch]
+	autosetupmerge = true
+[diff]
+  algorithm = patience
+[push]
+	default = current
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
