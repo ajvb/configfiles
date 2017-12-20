@@ -1,14 +1,12 @@
 """ Plugin Manager: https://github.com/junegunn/vim-plug
 " Plugins {{{
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " General Code Formatting
 Plug 'scrooloose/syntastic'                 " Syntax checkers
 Plug 'kien/rainbow_parentheses.vim'         " parentheses pretty highlighting
-" Plug 'Valloric/YouCompleteMe'
 
 " terraform formatting
 Plug 'markcornick/vim-terraform'
-"Plug 'fatih/vim-hclfmt'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -46,7 +44,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Colors
 Plug 'junegunn/seoul256.vim'
-"Plug 'dylanaraps/wal'
 
 " Ack
 Plug 'mileszs/ack.vim'
