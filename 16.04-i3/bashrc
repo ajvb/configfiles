@@ -20,8 +20,6 @@ alias pingg="ping -c 5 google.com"
 export GOPATH="$HOME/gocode"
 export PATH="$PATH:$GOPATH/bin"
 
-eval "$(rbenv init -)"
-
 #source /usr/local/bin/virtualenvwrapper.sh
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=0
@@ -80,6 +78,8 @@ extract () {
      echo "'$1' is not a valid file!"
  fi
 }
+
+eval "$(rbenv init -)"
 
 # Linux specific
 export TERMINAL=/usr/bin/urxvt
